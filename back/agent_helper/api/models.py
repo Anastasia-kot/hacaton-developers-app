@@ -10,6 +10,9 @@ class RealEstateOwner(models.Model):
 
     name = models.CharField(max_length=255)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class RealEstate(models.Model):
 
@@ -22,6 +25,9 @@ class RealEstate(models.Model):
     dt = models.DateTimeField(auto_now_add=True)
     price = models.CharField(max_length=255)
     img_src = models.TextField()
+    
+    def __str__(self) -> str:
+        return str(self.dt)
 
 
 class FreelanceAgent(models.Model):
