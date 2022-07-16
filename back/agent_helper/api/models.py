@@ -59,25 +59,25 @@ class PriceStory(models.Model):
     dt = models.DateField(auto_now_add=True)
 
 
-class Gold(models.model):
+class Gold(models.Model):
 
     rate = models.CharField(max_length=255)
-    dt = models.DateField(auto_now_add=True)
+    dt = models.DateTimeField(auto_now_add=True)
 
 
-class Dollar(models.model):
+class Dollar(models.Model):
     
     rate = models.CharField(max_length=255)
-    dt = models.DateField(auto_now_add=True)
+    dt = models.DateTimeField(auto_now_add=True)
 
 
-class Euro(models.model):
+class Euro(models.Model):
 
     rate = models.CharField(max_length=255)
-    dt = models.DateField(auto_now_add=True)
+    dt = models.DateTimeField(auto_now_add=True)
 
 
 class Btc(models.Model):
 
     rate = models.CharField(max_length=255)
-    dt = models.DateField(auto_now_add=True)
+    dt = models.DateTimeField(auto_now_add=True)

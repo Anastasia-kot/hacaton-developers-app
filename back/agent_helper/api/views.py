@@ -3,7 +3,8 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from api.serializers import UserSerializer, GroupSerializer
 from api import serializers
-from api import model
+from api import models
+from collections import OrderedDict
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -36,11 +37,20 @@ class RealEstatesViewSet(viewsets.ModelViewSet):
     queryset = models.RealEstate.objects.all()
     serializer_class = serializers.RealEstatesSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_fields = [
+        'owner',
+        'area_type',
+        'region',
+        'realestate_type',
+        'period',
+        'relation',
+        'dt',
+    ]
 
 
 class FreelanceAgentViewSet(viewsets.ModelViewSet):
 
-    queryset = models.Agent.objects.all()
+    queryset = models.FreelanceAgent.objects.all()
     serializer_class = serializers.AgencySerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -82,26 +92,34 @@ class PriceStoryViewSet(viewsets.ModelViewSet):
 
 class GoldViewSet(viewsets.ModelViewSet):
 
-    queryset = models.Gold.objects.all()
+    queryset = models.Gold.objects.order_by('-dt')[:1]
     serializer_class = serializers.GoldSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class DollarViewSet(viewsets.ModelViewSet):
 
-    queryset = models.Dollar.objects.all()
+    queryset = models.Dollar.objects.order_by('-dt')[:1]
     serializer_class = serializers.DollarSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class EuroViewSet(viewsets.ModelViewSet):
 
-    queryset = models.Euro.objects.all()
+    queryset = models.Euro.objects.order_by('-dt')[:1]
     serializer_class = serializers.EuroSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class BtcViewSet(viewsets.ModelViewSet):
 
-    queryset = models.Btc.objects.all()
+    queryset = models.Btc.objects.order_by('-dt')[:1]
     serializer_class = serializers.BtcSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class CustomViewSet(viewsets.ModelViewSet):
+
+    queryset = models.RealEstate.objects.all()
+    serializer_class = serializers.CustomSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
