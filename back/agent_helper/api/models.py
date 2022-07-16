@@ -20,6 +20,8 @@ class RealEstate(models.Model):
     period = models.IntegerField()
     relation = models.IntegerField()
     dt = models.DateTimeField(auto_now_add=True)
+    price = models.CharField(max_length=255)
+    img_src = models.TextField()
 
 
 class FreelanceAgent(models.Model):
