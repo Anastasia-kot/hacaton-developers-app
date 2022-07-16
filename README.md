@@ -9,3 +9,4 @@ cd agent_helper
 python.exe manage.py runserver
 ```
 and go to http://localhost:8000/swagger
+admin/admin
